@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Contract Versions</title>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <style>
+        .card-header {
+            background-color: #007bff;
+            color: #fff;
+        }
+
+        .card-title {
+            margin-bottom: 0;
+        }
+
+        .card-body {
+            padding-top: 30px;
+        }
+
+        .version-item {
+            margin-bottom: 10px;
+        }
+
+        .version-title {
+            font-weight: bold;
+        }
+
+        .version-date {
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title mb-0">Contract Versions</h4>
+                    </div>
+                    <div class="card-body">
+                        {% if versoes_contrato %}
+                            <ul class="list-unstyled">
+                                {% for versao in versoes_contrato %}
+                                    <li class="version-item">
+                                        <p class="version-title">Version {{ versao.id }}</p>
+                                        <p class="version-date">Created on: {{ versao.data_criacao }}</p>
+                                        <a href="{% url 'contratos:version_details' contrato_id=contrato.id versao_id=versao.id %}">View Version</a>
+                                        <a href="{% url 'contratos:restore_version' contrato_id=contrato.id versao_id=versao.id %}">Restore Version</a>
+
+                                        <a href="{% url 'contratos:delete_version' contrato_id=contrato.id versao_id=versao.id %}">Delete Version</a>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        {% else %}
+                            <p>No versions found for this contract.</p>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

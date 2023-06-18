@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Version Details</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        h1 {
+            color: #007bff;
+        }
+
+        .details-label {
+            font-weight: bold;
+            display: inline-block;
+            width: 200px;
+        }
+
+        .details-value {
+            display: inline-block;
+        }
+
+        .details-container {
+            white-space: nowrap;
+        }
+
+        .back-button {
+            margin-top: 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+
+        .back-button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h1>Version Details</h1>
+    <hr>
+    <div class="details-container">
+        <p><span class="details-label">Contract Title:</span> <span class="details-value">{{ contrato.contract_title }}</span></p>
+        <p><span class="details-label">Involved Parties:</span> <span class="details-value">{{ contrato.involved_parties }}</span></p>
+        <p><span class="details-label">Validity Start Date:</span> <span class="details-value">{{ contrato.validity_start_date }}</span></p>
+        <p><span class="details-label">Validity End Date:</span> <span class="details-value">{{ contrato.validity_end_date }}</span></p>
+        <p><span class="details-label">Specific Clauses:</span> <span class="details-value">{{ contrato.specific_clauses }}</span></p>
+        <p><span class="details-label">Description:</span> <span class="details-value">{{ contrato.description }}</span></p>
+        <p><span class="details-label">Version:</span> <span class="details-value">{{ versao.id }}</span></p>
+        <p><span class="details-label">Date:</span> <span class="details-value">{{ versao.data_criacao }}</span></p>
+    </div>
+
+    <button class="back-button" onclick="goBack()">Back to Contract Versions</button>
+
+    <script>
+        function goBack() {
+            window.history.back();
+        }
+    </script>
+</body>
+</html>
